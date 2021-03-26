@@ -18,24 +18,11 @@ class BeersController extends AbstractController
      * Lists all Beers.
      * @Rest\Get("/beers")
      *
-     * @return Response
-     */
-    public function index()
-    {
-        $client = new Client();
-        $response = $client->request('GET', 'https://api.punkapi.com/v2/beers');
-        return $this->json(json_decode($response->getBody()));
-    }
-
-    /**
-     * Metodo para realizar busquedas y mostrar los valores necesarios
-     * @Rest\Get("/beers/{item}")
-     *
      * @param Request $request
      * @return Response
      * @throws GuzzleException
      */
-    public function show(Request $request)
+    public function index(Request $request)
     {
         $search = $request->get("search");
         $showAll = $request->get("show_all");
